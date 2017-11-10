@@ -1,2 +1,2 @@
 # MoneyMaker
-Projeto Acadêmico - Banco MoneyMaker
+Projeto Acadêmico - Banco MoneyMaker (Gerente)
