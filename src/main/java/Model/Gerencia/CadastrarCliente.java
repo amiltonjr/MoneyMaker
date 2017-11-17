@@ -8,7 +8,7 @@ public class CadastrarCliente {
     
     public static boolean cadastrarCliente(String cpf, String rg, String sexo, String nome, String endereco, String nascimento, boolean vip) {
        // Valida os dados
-       if (cpf.length() < 11 || rg.length() < 5 || sexo.length() < 8 || nome.length() < 3 || endereco.length() < 5 || nascimento.length() < 8)
+       if (!ValidaCpf.CPF(cpf) || !ValidaRg.RG(rg) || sexo.length() < 8 || nome.length() < 3 || endereco.length() < 5 || !ValidaData.validarData(nascimento))
            return false;
        
        Cliente cliente = new Cliente();

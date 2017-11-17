@@ -1,8 +1,12 @@
 package Control.Gerencia;
 
+import Model.Gerencia.ValidaData;
+import Model.Gerencia.ValidaNumero;
 import Entity.Gerencia.Cliente;
 import Model.Gerencia.AbrirConta;
 import Model.Gerencia.CadastrarCliente;
+import Model.Gerencia.ValidaCpf;
+import Model.Gerencia.ValidaRg;
 import View.Gerencia.FrameAberturaConta;
 import View.Gerencia.FrameBemVindo;
 import View.Gerencia.FrameConfirmAbertura;
@@ -68,23 +72,24 @@ public class ControlAberturaConta {
     }
     
     public static void cadastrarCliente(FrameAberturaConta currentFrame, FrameConfirmAbertura frameSucess, FrameErroAbertura frameError, String cpf, String rg, String sexo, String nome, String endereco, String nascimento, boolean vip) {
+        
         // Valida os dados
-        if (cpf.contains(" ")) {
+        if (!ValidaCpf.CPF(cpf)) {
             erroFormulario("CPF");
             currentFrame.focoCPF();
-        } else if (rg.contains(" ")) {
+        } else if (!ValidaRg.RG(rg)) {
             erroFormulario("RG");
             currentFrame.focoRG();
         } else if (sexo.equalsIgnoreCase("- Selecione -")) {
             erroFormulario("Sexo");
             currentFrame.focoSexo();
-        } else if (nome.length() < 1) {
+        } else if (nome.length() < 3) {
             erroFormulario("Nome");
             currentFrame.focoNome();
-        } else if (endereco.length() < 1) {
+        } else if (endereco.length() < 3) {
             erroFormulario("Endereço");
             currentFrame.focoEndereco();
-        } else if (nascimento.contains(" ")) {
+        } else if (!ValidaData.validarData(nascimento)) {
             erroFormulario("Nascimento");
             currentFrame.focoNascimento();
         } else {
@@ -100,25 +105,28 @@ public class ControlAberturaConta {
     public static void abrirContaCorrenteLimite(FrameAberturaConta currentFrame, FrameConfirmAbertura frameSucess, FrameErroAbertura frameError, String conta, String agencia, Cliente correntista, String saldoInicial, String limite, String dataAbertura, boolean contrato, boolean necessidades, boolean outroBanco) {
         // Valida os dados
         
-        if (conta.length() < 1) {
+        if (!ValidaNumero.isNumeric(conta)) {
             erroFormulario("Conta");
             currentFrame.focoLimiteNumeroConta();
-        } else if (agencia.length() < 1) {
+        } else if (!ValidaNumero.isNumeric(agencia)) {
             erroFormulario("Agência");
             currentFrame.focoLimiteAgencia();
         } else if (correntista == null) {
             erroFormulario("Correntista");
             currentFrame.focoLimiteNomeCorrentista();
-        } else if (saldoInicial.length() < 1) {
+        } else if (!ValidaNumero.isNumeric(saldoInicial)) {
             erroFormulario("Saldo inicial");
             currentFrame.focoLimiteSaldoInicial();
-        } else if (limite.length() < 1) {
+        } else if (!ValidaNumero.isNumeric(limite)) {
             erroFormulario("Limite");
             currentFrame.focoLimiteLimite();
-        } else if (dataAbertura.contains(" ")) {
+        } else if (!ValidaData.validarData(dataAbertura)) {
             erroFormulario("Data de abertura");
             currentFrame.focoLimiteDataAbertura();
         } else {
+            // Corrige os floats
+            saldoInicial = saldoInicial.replace(",", ".");
+            limite = limite.replace(",", ".");
             // Envia para o pacote Model
             if (AbrirConta.abrirContaCorrenteLimite(conta, agencia, correntista, saldoInicial, limite, dataAbertura, contrato, necessidades, outroBanco))
                 sucesso(currentFrame, frameSucess);
@@ -129,22 +137,24 @@ public class ControlAberturaConta {
     
     public static void abrirContaCorrente(FrameAberturaConta currentFrame, FrameConfirmAbertura frameSucess, FrameErroAbertura frameError, String conta, String agencia, Cliente correntista, String saldoInicial, String dataAbertura, boolean contrato, boolean necessidades, boolean outroBanco) {
         // Valida os dados
-        if (conta.length() < 1) {
+        if (!ValidaNumero.isNumeric(conta)) {
             erroFormulario("Conta");
             currentFrame.focoCorrenteNumeroConta();
-        } else if (agencia.length() < 1) {
+        } else if (!ValidaNumero.isNumeric(agencia)) {
             erroFormulario("Agência");
             currentFrame.focoCorrenteAgencia();
         } else if (correntista == null) {
             erroFormulario("Correntista");
             currentFrame.focoCorrenteNomeCorrentista();
-        } else if (saldoInicial.length() < 1) {
+        } else if (!ValidaNumero.isNumeric(saldoInicial)) {
             erroFormulario("Saldo inicial");
             currentFrame.focoCorrenteSaldoInicial();
-        } else if (dataAbertura.contains(" ")) {
+        } else if (!ValidaData.validarData(dataAbertura)) {
             erroFormulario("Data de abertura");
             currentFrame.focoCorrenteDataAbertura();
         } else {
+            // Corrige os floats
+            saldoInicial = saldoInicial.replace(",", ".");
             // Envia para o pacote Model
             if (AbrirConta.abrirContaCorrente(conta, agencia, correntista, saldoInicial, dataAbertura, contrato, necessidades, outroBanco))
                 sucesso(currentFrame, frameSucess);
@@ -155,22 +165,24 @@ public class ControlAberturaConta {
     
     public static void abrirContaPoupanca(FrameAberturaConta currentFrame, FrameConfirmAbertura frameSucess, FrameErroAbertura frameError, String conta, String agencia, Cliente correntista, String saldoInicial, String aniversario, boolean contrato, boolean necessidades, boolean outroBanco) {
         // Valida os dados
-        if (conta.length() < 1) {
+        if (!ValidaNumero.isNumeric(conta)) {
             erroFormulario("Conta");
             currentFrame.focoPoupancaNumeroConta();
-        } else if (agencia.length() < 1) {
+        } else if (!ValidaNumero.isNumeric(agencia)) {
             erroFormulario("Agência");
             currentFrame.focoPoupancaAgencia();
         } else if (correntista == null) {
             erroFormulario("Correntista");
             currentFrame.focoPoupancaNomeCorrentista();
-        } else if (saldoInicial.length() < 1) {
+        } else if (!ValidaNumero.isNumeric(saldoInicial)) {
             erroFormulario("Saldo inicial");
             currentFrame.focoPoupancaSaldoInicial();
-        } else if (aniversario.contains(" ")) {
+        } else if (!ValidaData.validarData(aniversario)) {
             erroFormulario("Aniversário");
             currentFrame.focoPoupancaAniversario();
         } else {
+            // Corrige os floats
+            saldoInicial = saldoInicial.replace(",", ".");
             // Envia para o pacote Model
             if (AbrirConta.abrirContaPoupanca(conta, agencia, correntista, saldoInicial, aniversario, contrato, necessidades, outroBanco))
                 sucesso(currentFrame, frameSucess);

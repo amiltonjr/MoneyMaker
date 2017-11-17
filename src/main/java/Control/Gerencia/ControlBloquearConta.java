@@ -1,8 +1,6 @@
 package Control.Gerencia;
 
-import DAO.Gerencia.ClienteDAO;
 import DAO.Gerencia.ContaDAO;
-import Entity.Gerencia.Cliente;
 import Entity.Gerencia.Conta;
 import View.Gerencia.FrameBemVindo;
 import View.Gerencia.FrameBloquearConta;
