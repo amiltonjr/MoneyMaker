@@ -5,6 +5,14 @@
  */
 package View.Gerencia;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author amiltonjunior
@@ -33,6 +41,10 @@ public class PaginaInicial extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerência - Banco MoneyMaker");
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(780, 525));
+        setMinimumSize(new java.awt.Dimension(780, 525));
+        setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,8 +56,6 @@ public class PaginaInicial extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 525, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -78,13 +88,28 @@ public class PaginaInicial extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PaginaInicial dialog = new PaginaInicial(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                PaginaInicial dialog = new PaginaInicial(new JFrame(), true);
+                dialog.addWindowListener(new WindowAdapter() {
                     @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
+                    public void windowClosing(WindowEvent e) {
                         System.exit(0);
                     }
                 });
+                
+                // Para exibir a interface em formato cross-platform
+                /*
+                try {
+                    UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(PaginaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(PaginaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(PaginaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(PaginaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                */
                 
                 // JFrames
                 FrameBemVindo frameBemVindo = new FrameBemVindo();
@@ -117,6 +142,7 @@ public class PaginaInicial extends javax.swing.JDialog {
                 frameBloquear.setLocationRelativeTo(null);
                 frameConfirmaAbertura.setLocationRelativeTo(null);
                 frameErroAbertura.setLocationRelativeTo(null);
+                
                 
                 // Exibe o JFrame principal
                 frameBemVindo.setVisible(true);
