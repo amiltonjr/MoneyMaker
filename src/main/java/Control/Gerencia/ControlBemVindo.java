@@ -3,6 +3,7 @@ package Control.Gerencia;
 import View.Gerencia.FrameAberturaConta;
 import View.Gerencia.FrameBemVindo;
 import View.Gerencia.FrameBloquearConta;
+import View.Gerencia.FrameDeletarConta;
 import View.Gerencia.FrameEstornar;
 
 public class ControlBemVindo {
@@ -25,6 +26,13 @@ public class ControlBemVindo {
         currentFrame.setVisible(false); // Oculta o FrameBemVindo
         nextFrame.setVisible(true); // Exibe o FrameBloquearConta
         ControlBloquearConta.limparCampos(nextFrame); // Limpa os campos do formulário
+        nextFrame.preencherNomesClientes(); // Preenche o combobox
+    }
+    
+    public static void deletar(FrameBemVindo currentFrame, FrameDeletarConta nextFrame) {
+        currentFrame.setVisible(false); // Oculta o FrameBemVindo
+        nextFrame.setVisible(true); // Exibe o FrameBloquearConta
+        ControlDeletarConta.limparCampos(nextFrame); // Limpa os campos do formulário
         nextFrame.preencherNomesClientes(); // Preenche o combobox
     }
     

@@ -7,11 +7,7 @@ package View.Gerencia;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -116,6 +112,7 @@ public class PaginaInicial extends javax.swing.JDialog {
                 FrameAberturaConta frameAberturaConta = new FrameAberturaConta();
                 FrameEstornar frameEstornar = new FrameEstornar();
                 FrameBloquearConta frameBloquear = new FrameBloquearConta();
+                FrameDeletarConta frameDeletar = new FrameDeletarConta();
                 FrameConfirmAbertura frameConfirmaAbertura = new FrameConfirmAbertura();
                 FrameErroAbertura frameErroAbertura = new FrameErroAbertura();
                 
@@ -123,6 +120,7 @@ public class PaginaInicial extends javax.swing.JDialog {
                 frameAberturaConta.setParentFrame(frameBemVindo);
                 frameEstornar.setParentFrame(frameBemVindo);
                 frameBloquear.setParentFrame(frameBemVindo);
+                frameDeletar.setParentFrame(frameBemVindo);
                 frameConfirmaAbertura.setParentFrame(frameBemVindo);
                 frameErroAbertura.setParentFrame(frameBemVindo);
                 
@@ -130,6 +128,7 @@ public class PaginaInicial extends javax.swing.JDialog {
                 frameBemVindo.setFrameAbertura(frameAberturaConta);
                 frameBemVindo.setFrameEstornar(frameEstornar);
                 frameBemVindo.setFrameBloquear(frameBloquear);
+                frameBemVindo.setFrameDeletar(frameDeletar);
                 
                 // Define os frames de erro e sucesso
                 frameAberturaConta.setSucessFrame(frameConfirmaAbertura);
@@ -140,6 +139,7 @@ public class PaginaInicial extends javax.swing.JDialog {
                 frameAberturaConta.setLocationRelativeTo(null);
                 frameEstornar.setLocationRelativeTo(null);
                 frameBloquear.setLocationRelativeTo(null);
+                frameDeletar.setLocationRelativeTo(null);
                 frameConfirmaAbertura.setLocationRelativeTo(null);
                 frameErroAbertura.setLocationRelativeTo(null);
                 

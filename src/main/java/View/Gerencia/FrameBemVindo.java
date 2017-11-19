@@ -17,6 +17,7 @@ public class FrameBemVindo extends javax.swing.JFrame {
     private FrameAberturaConta frameAbertura;
     private FrameEstornar frameEstornar;
     private FrameBloquearConta frameBloquear;
+    private FrameDeletarConta frameDeletar;
 
     /**
      * Creates new form FrameEfetuarDeposito
@@ -37,6 +38,10 @@ public class FrameBemVindo extends javax.swing.JFrame {
         this.frameBloquear = frame;
     }
     
+    public void setFrameDeletar(FrameDeletarConta frame) {
+        this.frameDeletar = frame;
+    }
+    
     public FrameAberturaConta getFrameAbertura() {
         return this.frameAbertura;
     }
@@ -47,6 +52,10 @@ public class FrameBemVindo extends javax.swing.JFrame {
     
     public FrameBloquearConta getFrameBloquear() {
         return this.frameBloquear;
+    }
+    
+    public FrameDeletarConta getFrameDeletar() {
+        return this.frameDeletar;
     }
 
     /**
@@ -70,6 +79,8 @@ public class FrameBemVindo extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         BloquearConta = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        DeletarConta = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel9.setText("jLabel9");
 
@@ -149,37 +160,50 @@ public class FrameBemVindo extends javax.swing.JFrame {
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icones/erro.jpg"))); // NOI18N
 
+        DeletarConta.setText("Deletar uma Conta");
+        DeletarConta.setToolTipText("");
+        DeletarConta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DeletarContaMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icones/remover.jpg"))); // NOI18N
+
         javax.swing.GroupLayout PainelPrincipal6Layout = new javax.swing.GroupLayout(PainelPrincipal6);
         PainelPrincipal6.setLayout(PainelPrincipal6Layout);
         PainelPrincipal6Layout.setHorizontalGroup(
             PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelPrincipal6Layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(85, 85, 85))
             .addGroup(PainelPrincipal6Layout.createSequentialGroup()
                 .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelPrincipal6Layout.createSequentialGroup()
                         .addGap(266, 266, 266)
                         .addComponent(lblLogotipo6))
                     .addGroup(PainelPrincipal6Layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(253, 253, 253)
+                        .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(PainelPrincipal6Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AbrirConta, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(PainelPrincipal6Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(AbrirConta, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PainelPrincipal6Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(EstornarLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PainelPrincipal6Layout.createSequentialGroup()
+                                .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(BloquearConta, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(PainelPrincipal6Layout.createSequentialGroup()
-                                    .addComponent(jLabel11)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(EstornarLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(BloquearConta, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DeletarConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelPrincipal6Layout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(85, 85, 85))
         );
         PainelPrincipal6Layout.setVerticalGroup(
             PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,21 +213,25 @@ public class FrameBemVindo extends javax.swing.JFrame {
                 .addComponent(lblLogotipo6)
                 .addGap(107, 107, 107)
                 .addComponent(jLabel1)
-                .addGap(65, 65, 65)
+                .addGap(43, 43, 43)
                 .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(AbrirConta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(38, 38, 38)
+                .addGap(27, 27, 27)
                 .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EstornarLancamento, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PainelPrincipal6Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel11)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BloquearConta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64))
+                .addGap(29, 29, 29)
+                .addGroup(PainelPrincipal6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(DeletarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,6 +275,10 @@ public class FrameBemVindo extends javax.swing.JFrame {
         ControlBemVindo.bloquear(this, getFrameBloquear());
     }//GEN-LAST:event_BloquearContaActionPerformed
 
+    private void DeletarContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeletarContaMouseClicked
+        ControlBemVindo.deletar(this, getFrameDeletar());
+    }//GEN-LAST:event_DeletarContaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +317,7 @@ public class FrameBemVindo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AbrirConta;
     private javax.swing.JButton BloquearConta;
+    private javax.swing.JButton DeletarConta;
     private javax.swing.JButton EstornarLancamento;
     private javax.swing.JPanel PainelPrincipal6;
     private javax.swing.JLabel jLabel1;
@@ -292,6 +325,7 @@ public class FrameBemVindo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogotipo6;
