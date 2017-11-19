@@ -20,15 +20,7 @@ public class ClienteDAO {
     }
 
     private ClienteDAO() {
-        try {
-            entityManager = Instance.getEntityManager();
-        } catch (Exception e) {
-            e.printStackTrace();
-            
-            JOptionPane.showMessageDialog(null, "Erro ao conectar ao banco de dados!", "Banco MoneyMaker", JOptionPane.ERROR_MESSAGE);
-            
-            System.exit(1);
-        }
+        entityManager = Instance.getEntityManager();
     }
     
     public EntityManager getEntity() {
