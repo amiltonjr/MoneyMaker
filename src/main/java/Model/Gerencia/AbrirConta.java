@@ -10,7 +10,7 @@ public class AbrirConta {
 
     public static boolean abrirContaCorrente(String numero, String agencia, Cliente correntista, String saldoInicial, String dataAbertura, boolean contrato, boolean necessidades, boolean outroBanco) {
         // Valida os dados
-        if (!ValidaNumero.isNumeric(numero) || !ValidaNumero.isNumeric(agencia) || correntista == null || !ValidaNumero.isNumeric(saldoInicial) || !ValidaData.validarData(dataAbertura)) {
+        if (!ValidaNumero.isNumeric(numero) || Integer.valueOf(numero) <= 0 || !ValidaNumero.isNumeric(agencia) || Integer.valueOf(agencia) <= 0 || correntista == null || !ValidaNumero.isNumeric(saldoInicial) || Double.valueOf(saldoInicial) <= 0.00 || !ValidaData.validarData(dataAbertura)) {
             return false;
         }
 
@@ -39,7 +39,7 @@ public class AbrirConta {
 
     public static boolean abrirContaCorrenteLimite(String numero, String agencia, Cliente correntista, String saldoInicial, String limite, String dataAbertura, boolean contrato, boolean necessidades, boolean outroBanco) {
         // Valida os dados
-        if (!ValidaNumero.isNumeric(numero) || !ValidaNumero.isNumeric(agencia) || correntista == null || !ValidaNumero.isNumeric(saldoInicial) || !ValidaNumero.isNumeric(limite) || !ValidaData.validarData(dataAbertura)) {
+        if (!ValidaNumero.isNumeric(numero) || Integer.valueOf(numero) <= 0 || !ValidaNumero.isNumeric(agencia) || Integer.valueOf(agencia) <= 0 || correntista == null || !ValidaNumero.isNumeric(saldoInicial) || Double.valueOf(saldoInicial) <= 0.00 || !ValidaNumero.isNumeric(limite) || !ValidaData.validarData(dataAbertura)) {
             return false;
         }
 
@@ -72,7 +72,7 @@ public class AbrirConta {
 
     public static boolean abrirContaPoupanca(String numero, String agencia, Cliente correntista, String saldoInicial, String aniversario, boolean contrato, boolean necessidades, boolean outroBanco) {
         // Valida os dados
-        if (!ValidaNumero.isNumeric(numero) || !ValidaNumero.isNumeric(agencia) || correntista == null || !ValidaNumero.isNumeric(saldoInicial) || !ValidaData.validarData(aniversario)) {
+        if (!ValidaNumero.isNumeric(numero) || Integer.valueOf(numero) <= 0 || !ValidaNumero.isNumeric(agencia) || Integer.valueOf(agencia) <= 0 || correntista == null || !ValidaNumero.isNumeric(saldoInicial) || Double.valueOf(saldoInicial) <= 0.00 || !ValidaData.validarData(aniversario)) {
             return false;
         }
         
